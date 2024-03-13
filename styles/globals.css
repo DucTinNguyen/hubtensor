@@ -19,3 +19,14 @@ body {
 .map > path {
   fill: #2a354d;
 }
+
+::-webkit-scrollbar-track{
+  background-color: #000110;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a354d;
+  border-radius: 10px;
+}
