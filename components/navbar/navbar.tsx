@@ -22,14 +22,15 @@ export const NavbarWrapper = ({ children }: Props) => {
   return (
     <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden w-full min-h-screen">
       <Image src={bgDashBoard} alt="bgDashboard" fill priority />
-      <Navbar
-        className="w-full bg-transparent backdrop-saturate-[none]"
-      >
-        <NavbarContent className="md:hidden">
-          <BurguerButton />
-        </NavbarContent>
+      <div className="relative">
+        <Navbar
+          className="w-full bg-transparent backdrop-saturate-[none]"
+        >
+          <NavbarContent className="md:hidden">
+            <BurguerButton />
+          </NavbarContent>
 
-        {/* {address ? <div className="flex w-full justify-end items-center space-x-4">
+          {/* {address ? <div className="flex w-full justify-end items-center space-x-4">
           <div className="flex items-center space-x-4">
             <p>{resolvedTheme === 'light' ? 'Light' : 'Dark'}</p>
             <Switch
@@ -45,8 +46,10 @@ export const NavbarWrapper = ({ children }: Props) => {
           <UserDropdown />
           
         </div> : <ButtonConnectWallet className="flex w-full justify-end"/>} */}
-      </Navbar>
-      {children}
+        </Navbar>
+        {children}
+      </div>
+
     </div>
   );
 };

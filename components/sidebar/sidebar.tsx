@@ -1,28 +1,26 @@
-import React from "react";
-import { Sidebar } from "./sidebar.styles";
-import { Avatar, Tooltip } from "@nextui-org/react";
-import { CompaniesDropdown } from "./companies-dropdown";
+import { useTheme as useNextTheme } from "next-themes";
+import { usePathname } from "next/navigation";
+import { AccountsIcon } from "../icons/sidebar/accounts-icon";
 import { HomeIcon } from "../icons/sidebar/home-icon";
 import { PaymentsIcon } from "../icons/sidebar/payments-icon";
-import { BalanceIcon } from "../icons/sidebar/balance-icon";
-import { AccountsIcon } from "../icons/sidebar/accounts-icon";
-import { CustomersIcon } from "../icons/sidebar/customers-icon";
-import { ProductsIcon } from "../icons/sidebar/products-icon";
-import { ReportsIcon } from "../icons/sidebar/reports-icon";
-import { DevIcon } from "../icons/sidebar/dev-icon";
-import { ViewIcon } from "../icons/sidebar/view-icon";
-import { SettingsIcon } from "../icons/sidebar/settings-icon";
-import { CollapseItems } from "./collapse-items";
+import { useSidebarContext } from "../layout/layout-context";
 import { SidebarItem } from "./sidebar-item";
 import { SidebarMenu } from "./sidebar-menu";
-import { FilterIcon } from "../icons/sidebar/filter-icon";
-import { useSidebarContext } from "../layout/layout-context";
-import { ChangeLogIcon } from "../icons/sidebar/changelog-icon";
-import { usePathname } from "next/navigation";
-import logo from '@/public/black.png'
-import logoDark from '@/public/white.png'
-import Image from "next/image";
-import { useTheme as useNextTheme } from "next-themes";
+import { Sidebar } from "./sidebar.styles";
+
+import ic_miner from '@/public/sidebar/miner.svg'
+import ic_validator from '@/public/sidebar/validator.svg'
+import ic_lightnode from '@/public/sidebar/lightnode.svg'
+import ic_archivernode from '@/public/sidebar/archivenode.svg'
+import ic_subnet from '@/public/sidebar/subnet.svg'
+import ic_dashboard from '@/public/sidebar/dashboard.svg'
+import ic_billing from '@/public/sidebar/billing.svg'
+import ic_setting from '@/public/sidebar/settings.svg'
+import ic_tutorial from '@/public/sidebar/tutorials.svg'
+import ic_helpcenter from '@/public/sidebar/helpcenter.svg'
+import ic_staking from '@/public/sidebar/staking.svg'
+import ic_governance from '@/public/sidebar/governance.svg'
+
 
 export const SidebarWrapper = () => {
   const pathname = usePathname();
@@ -49,34 +47,34 @@ export const SidebarWrapper = () => {
           <div className={Sidebar.Body()}>
             <SidebarMenu title="Services">
               <SidebarItem
-                isActive={pathname === "/miner"}
+                isActive={pathname === "/miner" || pathname === "/"}
                 title="Miner"
-                icon={<AccountsIcon />}
+                icon={ic_miner}
                 href="miner"
               />
               <SidebarItem
                 isActive={pathname === "/validator"}
                 title="Validator"
                 href="validator"
-                icon={<PaymentsIcon />}
+                icon={ic_validator}
               />
               <SidebarItem
                 isActive={pathname === "/lite-node"}
                 title="Subtensor Lite Node"
-                href="light-node"
-                icon={<PaymentsIcon />}
+                href="lite-node"
+                icon={ic_lightnode}
               />
               <SidebarItem
                 isActive={pathname === "/archive-node"}
                 title="Subtensor Archive Node"
                 href="archive-node"
-                icon={<PaymentsIcon />}
+                icon={ic_archivernode}
               />
               <SidebarItem
                 isActive={pathname === "/subnet"}
                 title="Subnet"
                 href="subnet"
-                icon={<PaymentsIcon />}
+                icon={ic_subnet}
               />
             </SidebarMenu>
 
@@ -84,19 +82,19 @@ export const SidebarWrapper = () => {
               <SidebarItem
                 isActive={pathname === "/dashboard"}
                 title="Dashboard"
-                icon={<AccountsIcon />}
+                icon={ic_dashboard}
                 href="dashboard"
               />
               <SidebarItem
                 isActive={pathname === "/billing"}
                 title="Payment History"
-                icon={<PaymentsIcon />}
+                icon={ic_billing}
                 href="billing"
               />
               <SidebarItem
                 isActive={pathname === "/settings"}
                 title="Setting"
-                icon={<PaymentsIcon />}
+                icon={ic_setting}
                 href="settings"
               />
 
@@ -104,25 +102,25 @@ export const SidebarWrapper = () => {
 
             <SidebarItem
               title="Tutorials"
-              icon={<HomeIcon />}
+              icon={ic_tutorial}
               isActive={pathname === "/tutorials"}
               href="/tutorials"
             />
             <SidebarItem
               title="Help Center"
-              icon={<HomeIcon />}
+              icon={ic_helpcenter}
               isActive={pathname === "/help-center"}
               href="/help-center"
             />
             <SidebarItem
               title="Staking"
-              icon={<HomeIcon />}
+              icon={ic_staking}
               isActive={pathname === "/staking"}
               href="/staking"
             />
             <SidebarItem
               title="Governance"
-              icon={<HomeIcon />}
+              icon={ic_governance}
               isActive={pathname === "/governance"}
               href="/governance"
             />
