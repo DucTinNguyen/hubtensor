@@ -14,7 +14,11 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'gradient-sidebar':'linear-gradient(90deg, rgba(151, 71, 255, 0.20) 0%, rgba(91, 43, 153, 0.14) 100%)'
+        'gradient-sidebar': 'linear-gradient(90deg, rgba(151, 71, 255, 0.20) 0%, rgba(91, 43, 153, 0.14) 100%)',
+        'gradient-border': 'linear-gradient(180deg, #57576F -16.81%, #6C3BEF 118.51%)'
+      },
+      fontFamily: {
+        'jetbrain': ['JetBrain','sans-serif']
       }
     },
   },
