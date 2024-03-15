@@ -1,10 +1,12 @@
+'use client'
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
-import React from "react";
+import React, { useState } from "react";
 import ic_eth from "@/public/icons/ic-eth.svg";
 import ic_type from "@/public/icons/ic-type.svg";
 import elispe from "@/public/images/miner/elipse.png";
 import elipse1 from "@/public/images/miner/elipse1.png";
 import Image from "next/image";
+import Modal from "../modal";
 interface Props {
   price: number;
   icon_type: StaticImport;
@@ -16,6 +18,8 @@ interface Props {
 }
 
 const Card = ({ icon_type, price, cpu, gpu, memory, storage, os }: Props) => {
+  let [isOpen, setIsOpen] = useState(false);
+
   return (
     <section className="p-6 border border-[#353539] flex flex-col gap-6 bg-gradient-card relative">
       <div className="flex items-start justify-between">
@@ -53,11 +57,25 @@ const Card = ({ icon_type, price, cpu, gpu, memory, storage, os }: Props) => {
           <span className="text-base text-[#fff] font-bold">{os}</span>
         </p>
       </div>
-      <button className="btn w-full py-2 flex items-center justify-center">
-        <p className="bg-[#fdfeff] w-full py-2 rounded-lg font-semibold text-base">Buy</p>
+      <button
+        onClick={() => {
+          setIsOpen(true);
+        }} 
+        className="btn w-full h-full flex items-center justify-center cursor-pointer"
+      >
+        <p className="bg-[#fdfeff] w-full h-full py-2 rounded-lg font-semibold text-base cursor-pointer">
+          Buy
+        </p>
       </button>
       <Image className="absolute bottom-0 right-0" src={elispe} alt="elipse" />
       <Image src={elipse1} alt="elipse" className="absolute top-0 left-0" />
+
+      <Modal
+        isOpen={isOpen}
+        handleClose={() => {
+          setIsOpen(false);
+        }}
+      />
     </section>
   );
 };

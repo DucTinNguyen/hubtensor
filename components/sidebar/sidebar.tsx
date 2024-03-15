@@ -20,6 +20,8 @@ import ic_tutorial from '@/public/sidebar/tutorials.svg'
 import ic_helpcenter from '@/public/sidebar/helpcenter.svg'
 import ic_staking from '@/public/sidebar/staking.svg'
 import ic_governance from '@/public/sidebar/governance.svg'
+import logo from '@/images/logo/logo.png'
+import Image from "next/image";
 
 
 export const SidebarWrapper = () => {
@@ -38,10 +40,7 @@ export const SidebarWrapper = () => {
         })}`}
       >
         <div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
-            <path d="M31.7208 34.2177L48.9982 46.2809L33.2775 46.2809L15.4033 34.2177L31.7208 34.2177Z" fill="#FDFDFD" />
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M37.63 17.7191L15.0019 17.7191L21.1121 24.4954L31.5692 24.4954L31.5692 34.2171L29.8784 34.2171L29.8788 34.2176L45.6572 34.2176L45.6572 23.4068L37.63 17.7191Z" fill="#FDFDFD" />
-          </svg>
+          <Image alt="logo" src={logo} />
         </div>
         <div className="flex flex-col justify-between h-full">
           <div className={Sidebar.Body()}>

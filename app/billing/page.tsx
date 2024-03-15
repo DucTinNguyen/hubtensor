@@ -67,7 +67,7 @@ const columnsBill: Array<Columns<Billing>> = [
 const Billing = () => {
   return (
     <div className=' flex flex-col lg:gap-10'>
-      <button className='bg-[#FDFDFD] text-[#010214] flex items-center space-x-2 px-4 py-3 rounded-lg w-fit'>
+      <button className='bg-[#FDFDFD] btnRounded text-[#010214] flex items-center space-x-2 px-4 py-3 rounded-lg w-fit'>
         <Image src={ic_plus} alt='icon' className='w-5 h-5 min-w-5' />
         <span>Add Credits</span>
       </button>
