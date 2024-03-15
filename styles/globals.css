@@ -49,3 +49,14 @@ body {
     border: solid 1px;
     border-image: linear-gradient(180deg, #57576F -16.81%, #6C3BEF 118.51%) 1;
 }
+
+.btn{
+  background: linear-gradient(180deg, #C36EE1 0%, rgba(195, 110, 225, 0) 124.65%);
+  box-shadow: 0px -2px 4px 0px #6C3BEF inset, 0px 4px 8px 0px #6C3BEFB2;
+  padding: 2px;
+  border-radius: 8px;
+  overflow: hidden;;
+}
+.btnRounded{
+  box-shadow: 0px -2px 4px 0px #6C3BEF inset, 0px 4px 8px 0px #6C3BEFB2;
+}

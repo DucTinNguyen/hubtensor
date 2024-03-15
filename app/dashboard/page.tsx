@@ -1,29 +1,186 @@
-import Map from '@/components/dashboard/Map'
+'use client'
+import TableComponent from '@/components/table';
+import { Columns } from '@/components/table/type';
+import Image from 'next/image';
 import React from 'react'
+
+import ic_node from '@/public/icons/ic-node.svg'
+import ic_subnet from '@/public/icons/ic-subnet.svg'
+
+type Node = {
+  type: string;
+  status: string;
+  date_issued: string;
+}
+
+type Subnet = {
+  type: string;
+  netuid: string;
+  n: string
+  max_n: number;
+  emission: string;
+  tempo: string;
+  recycle: string;
+  pow: string;
+  sudo: string
+  status: string;
+  date_issued: string;
+}
+
+const columns: Array<Columns<Node>> = [
+  {
+    key: 'type',
+    name: 'Type',
+    renderColumns: (item) => {
+      return (
+        <p className='flex-auto text-[#6C3BEF] text-sm font-semibold flex items-center justify-center'>{item.name}</p>
+      )
+    }
+  },
+  {
+    key: 'netuid',
+    name: ' NETUID',
+    renderColumns: (item) => {
+      return (
+        <p className='flex-auto text-[#6C3BEF] text-sm font-semibold flex items-center justify-center'>{item.name}</p>
+      )
+    }
+  },
+  {
+    key: 'n',
+    name: 'N',
+    renderColumns: (item) => {
+      return (
+        <p className='flex-auto text-[#6C3BEF] text-sm font-semibold flex items-center justify-center'>{item.name}</p>
+      )
+    }
+  }
+
+]
+
+const columnsSubnet: Array<Columns<Subnet>> = [
+  {
+    key: 'type',
+    name: 'Type',
+    renderColumns: (item) => {
+      return (
+        <p className='flex-auto uppercase text-[#6C3BEF] text-sm font-semibold flex items-center justify-center'>{item.name}</p>
+      )
+    }
+  },
+  {
+    key: 'netuid',
+    name: 'netuid',
+    renderColumns: (item) => {
+      return (
+        <p className='flex-auto uppercase text-[#6C3BEF] text-sm font-semibold flex items-center justify-center'>{item.name}</p>
+      )
+    }
+  },
+  {
+    key: 'n',
+    name: 'n',
+    renderColumns: (item) => {
+      return (
+        <p className='flex-auto uppercase text-[#6C3BEF] text-sm font-semibold flex items-center justify-center'>{item.name}</p>
+      )
+    }
+  },
+  {
+    key: 'max_n',
+    name: 'MAX_N',
+    renderColumns: (item) => {
+      return (
+        <p className='flex-auto uppercase text-[#6C3BEF] text-sm font-semibold flex items-center justify-center'>{item.name}</p>
+      )
+    }
+  },
+  {
+    key: 'emission',
+    name: 'emission',
+    renderColumns: (item) => {
+      return (
+        <p className='flex-auto uppercase text-[#6C3BEF] text-sm font-semibold flex items-center justify-center'>{item.name}</p>
+      )
+    }
+  },
+  {
+    key: 'tempo',
+    name: 'tempo',
+    renderColumns: (item) => {
+      return (
+        <p className='flex-auto uppercase text-[#6C3BEF] text-sm font-semibold flex items-center justify-center'>{item.name}</p>
+      )
+    }
+  },
+  {
+    key: 'recycle',
+    name: 'recycle',
+    renderColumns: (item) => {
+      return (
+        <p className='flex-auto uppercase text-[#6C3BEF] text-sm font-semibold flex items-center justify-center'>{item.name}</p>
+      )
+    }
+  },
+  {
+    key: 'pow',
+    name: 'pow',
+    renderColumns: (item) => {
+      return (
+        <p className='flex-auto uppercase text-[#6C3BEF] text-sm font-semibold flex items-center justify-center'>{item.name}</p>
+      )
+    }
+  },
+  {
+    key: 'sudo',
+    name: 'sudo',
+    renderColumns: (item) => {
+      return (
+        <p className='flex-auto uppercase text-[#6C3BEF] text-sm font-semibold flex items-center justify-center'>{item.name}</p>
+      )
+    }
+  },
+  {
+    key: 'status',
+    name: 'status',
+    renderColumns: (item) => {
+      return (
+        <p className='flex-auto text-[#6C3BEF] text-sm font-semibold flex items-center justify-center'>{item.name}</p>
+      )
+    }
+  },
+  {
+    key: 'date issued',
+    name: 'date issued',
+    renderColumns: (item) => {
+      return (
+        <p className='flex-auto uppercase text-[#6C3BEF] text-sm font-semibold flex items-center justify-center'>{item.name}</p>
+      )
+    }
+  },
+  
+
+]
+
+
 
 const Dashboard = () => {
   return (
-    <main className='p-6'>
-      <section className='flex space-x-4 h-[360px]'>
-        <div className='w-[250px]'>
-            <span className='bg-cyan-500 p-2 w-full block text-white font-semibold rounded'>My nodes</span>
+    <main className=' flex flex-col lg:gap-10'>
+      <div className='flex flex-col space-y-6'>
+        <div className='flex items-center space-x-4'>
+          <Image src={ic_node} alt='icon' className='w-8 h-8 min-w-8' />
+          <span className='text-[24px] font-semibold text-[#FFFFFF]'>Node</span>
         </div>
-        <Map />
-      </section>
-      <section className='flex h-[360px] space-x-4'>
-        <div className='flex-1'>
-          <span className='bg-cyan-500 p-2 w-full block text-white font-semibold rounded'>Services reward</span>
-          <p className='flex items-center justify-center h-full'>
-            No data
-          </p>
+        <TableComponent className='w-[440px]' columns={columns} data={[]} />
+      </div>
+      <div className='flex flex-col space-y-6'>
+        <div className='flex items-center space-x-4'>
+          <Image src={ic_subnet} alt='icon' className='w-8 h-8 min-w-8' />
+          <span className='text-[24px] font-semibold text-[#FFFFFF]'>Subnet</span>
         </div>
-        <div className='flex-1'>
-          <span className='bg-cyan-500 p-2 w-full block text-white font-semibold rounded'>Staking reward</span>
-          <p className='flex items-center justify-center h-full'>
-            No data
-          </p>
-        </div>
-      </section>
+        <TableComponent columns={columnsSubnet} data={[]} />
+      </div>
     </main>
   )
 }

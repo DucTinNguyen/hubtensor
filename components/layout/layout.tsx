@@ -34,9 +34,13 @@ export const Layout = ({ children }: Props) => {
             setCollapsed: handleToggleSidebar,
           }}
         >
-          <section className="flex">
+          <section className="flex w-full">
             <SidebarWrapper />
-            <NavbarWrapper>{children}</NavbarWrapper>
+            <NavbarWrapper>
+              <div className="p-10">
+                {children}
+              </div>
+            </NavbarWrapper>
           </section>
         </SidebarContext.Provider>
       }

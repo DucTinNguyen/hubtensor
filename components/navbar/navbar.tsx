@@ -1,17 +1,70 @@
+import bgDashBoard from "@/public/dashboard.png";
+import icMetamask from "@/public/icon_metamask.svg";
 import { Navbar, NavbarContent } from "@nextui-org/react";
-import { useTheme as useNextTheme } from "next-themes";
+import { useWeb3Modal } from "@web3modal/wagmi/react";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 import React from "react";
+import { formatEther } from "viem";
 import { useAccount, useBalance, useDisconnect } from "wagmi";
 import { BurguerButton } from "./burguer-button";
-import bgDashBoard from "@/public/dashboard.png";
-import Image from "next/image";
-import icMetamask from "@/public/icon_metamask.svg";
-import ButtonConnectWallet from "../btn-connect";
-import { formatEther } from "viem";
-import { useWeb3Modal } from "@web3modal/wagmi/react";
+
 interface Props {
   children: React.ReactNode;
 }
+
+const pathNames = [
+  {
+    name: "/miner",
+    text: "Miner",
+  },
+  {
+    name: '/validator',
+    text: "Validator",
+  },
+  {
+    name: '/lite-node',
+    text: "Subtensor Lite Node",
+  },
+  {
+    name: '/archive-node',
+    text:"Subtensor Archive Node"
+  },
+  {
+    name: '/subnet',
+    text: "Subnet"
+  },
+  {
+    name: '/dashboard',
+    text: "Dashboard"
+  },
+  {
+    name: '/billing',
+    text: "Payment History"
+  },
+  {
+    name: '/settings',
+    text: "Settings"
+  },
+  {
+    name: '/tutorials',
+    text: "Tutorials"
+  },
+  {
+    name: '/help-center',
+    text: "Help Center"
+  },
+  {
+    name: '/staking',
+    text: "Staking"
+  },
+  {
+    name: '/governance',
+    text: "Governance"
+  },
+]
+
+
 
 export const NavbarWrapper = ({ children }: Props) => {
   const { address } = useAccount();
@@ -21,6 +74,8 @@ export const NavbarWrapper = ({ children }: Props) => {
     address: address,
   });
 
+  const pathName = usePathname();
+
   const handleConnect = () => {
     open()
   }
@@ -28,17 +83,17 @@ export const NavbarWrapper = ({ children }: Props) => {
     disconnect();
   };
 
+  const renderTitle = (title: string) => {
+    return pathNames.find(item => item.name === title)?.text;
+  }
+
   return (
     <div className="relative overflow-y-auto overflow-x-hidden w-full min-h-screen">
       <Image src={bgDashBoard} alt="bgDashboard" fill priority />
       <div className="relative w-full">
-        <Navbar className="w-full bg-transparent backdrop-saturate-[none]">
-          <NavbarContent className="md:hidden bg-white">
-            <BurguerButton />
-          </NavbarContent>
-
-          <div className="flex items-center justify-between w-full">
-            <p className="text-[#FFFFFF] text-xl font-bold">Dashboard</p>
+        <div className="h-[68px]">
+          <div className="flex items-center justify-between w-full lg:p-10">
+            <p className="text-[#FFFFFF] text-xl font-bold">{renderTitle(pathName)}</p>
             <div className="flex items-center space-x-4 text-[#fff] font-jetbrain">
               <p className="flex items-center space-x-3 text-sm">
                 <span>Balance:</span>
@@ -66,24 +121,7 @@ export const NavbarWrapper = ({ children }: Props) => {
               )}
             </div>
           </div>
-
-          {/* {address ? <div className="flex w-full justify-end items-center space-x-4">
-          <div className="flex items-center space-x-4">
-            <p>{resolvedTheme === 'light' ? 'Light' : 'Dark'}</p>
-            <Switch
-              isSelected={resolvedTheme === "dark" ? true : false}
-              onValueChange={(e) => setTheme(e ? "dark" : "light")}
-            />
-          </div>
-
-          <p>
-            <span>Balance:</span>
-            <span>${data?.data?.value ? Number(formatEther(data?.data?.value)).toFixed(5) : '0'}</span>
-          </p>
-          <UserDropdown />
-          
-        </div> : <ButtonConnectWallet className="flex w-full justify-end"/>} */}
-        </Navbar>
+        </div>
         {children}
       </div>
     </div>

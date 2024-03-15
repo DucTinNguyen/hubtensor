@@ -24,7 +24,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@/icon/*":["./public/icons/*"],
+      "@/images/*":["./public/images/*"]
     }
   },
   "include": [
