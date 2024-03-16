@@ -107,7 +107,7 @@ export const NavbarWrapper = ({ children }: Props) => {
               {address ? (
                 <div
                   onClick={handleDisconected}
-                  className="flex items-center text-[#fff] text-sm space-x-2 wallet"
+                  className="flex items-center text-[#fff] text-sm space-x-2 wallet cursor-pointer"
                 >
                   <Image
                     className="w-6 h-6 min-w-6"
@@ -117,7 +117,7 @@ export const NavbarWrapper = ({ children }: Props) => {
                   <span>{address.slice(0, 5) + "..." + address.slice(-5)}</span>
                 </div>
               ) : (
-                <p onClick={handleConnect} className="flex items-center text-[#fff] text-sm space-x-2 wallet">Connect Wallet</p>
+                <p onClick={handleConnect} className="flex items-center text-[#fff] text-sm space-x-2 wallet cursor-pointer">Connect Wallet</p>
               )}
             </div>
           </div>

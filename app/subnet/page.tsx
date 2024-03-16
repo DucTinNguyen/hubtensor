@@ -389,11 +389,11 @@ const columnsSubnet: Array<Columns<Subnet>> = [
     name: 'Max_N',
     renderColumns: (item) => {
       return (
-        <p className='grow text-[#6C3BEF] capitalize text-sm font-semibold flex items-center justify-center'>{item.name}</p>
+        <p className='w-[80px] text-[#6C3BEF] capitalize text-sm font-semibold flex items-center justify-end'>{item.name}</p>
       )
     },
     render: (_, item) => {
-      return <p className='grow text-center'>{item.MAX_N}</p>
+      return <p className='w-[80px] text-end'>{item.MAX_N}</p>
     }
   },
   {
@@ -401,11 +401,11 @@ const columnsSubnet: Array<Columns<Subnet>> = [
     name: 'emission',
     renderColumns: (item) => {
       return (
-        <p className='grow text-[#6C3BEF] capitalize text-sm font-semibold flex items-center justify-center'>{item.name}</p>
+        <p className='w-[100px] text-[#6C3BEF] capitalize text-sm font-semibold flex items-center justify-end'>{item.name}</p>
       )
     },
     render: (_, item) => {
-      return <p className='grow text-center'>{item.EMISSION}</p>
+      return <p className='w-[100px] text-end'>{item.EMISSION}</p>
     }
   },
   {
@@ -413,11 +413,11 @@ const columnsSubnet: Array<Columns<Subnet>> = [
     name: 'tempo',
     renderColumns: (item) => {
       return (
-        <p className='grow text-[#6C3BEF] capitalize text-sm font-semibold flex items-center justify-center'>{item.name}</p>
+        <p className='w-[80px] text-[#6C3BEF] capitalize text-sm font-semibold flex items-center justify-end'>{item.name}</p>
       )
     },
     render: (_, item) => {
-      return <p className='grow text-center'>{item.TEMPO}</p>
+      return <p className='w-[80px] text-end'>{item.TEMPO}</p>
     }
   },
   {
