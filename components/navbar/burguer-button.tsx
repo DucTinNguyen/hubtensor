@@ -1,6 +1,8 @@
 import React from "react";
 import { useSidebarContext } from "../layout/layout-context";
 import { StyledBurgerButton } from "./navbar.styles";
+import Image from "next/image";
+import menu from "@/icon/menu.svg";
 
 export const BurguerButton = () => {
   const { collapsed, setCollapsed } = useSidebarContext();
@@ -11,8 +13,7 @@ export const BurguerButton = () => {
       // open={collapsed}
       onClick={setCollapsed}
     >
-      <div />
-      <div />
+      <Image src={menu} alt="menu" />
     </div>
   );
 };

@@ -37,7 +37,7 @@ export const Layout = ({ children }: Props) => {
           <section className="flex w-full">
             <SidebarWrapper />
             <NavbarWrapper>
-              <div className="p-10">
+              <div className="p-4 md:p-6 lg:p-10">
                 {children}
               </div>
             </NavbarWrapper>

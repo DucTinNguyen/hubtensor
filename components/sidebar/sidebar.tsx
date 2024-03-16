@@ -1,46 +1,90 @@
 import { useTheme as useNextTheme } from "next-themes";
 import { usePathname } from "next/navigation";
-import { AccountsIcon } from "../icons/sidebar/accounts-icon";
-import { HomeIcon } from "../icons/sidebar/home-icon";
-import { PaymentsIcon } from "../icons/sidebar/payments-icon";
 import { useSidebarContext } from "../layout/layout-context";
 import { SidebarItem } from "./sidebar-item";
 import { SidebarMenu } from "./sidebar-menu";
 import { Sidebar } from "./sidebar.styles";
+import icMetamask from "@/public/icon_metamask.svg";
 
-import ic_miner from '@/public/sidebar/miner.svg'
-import ic_validator from '@/public/sidebar/validator.svg'
-import ic_lightnode from '@/public/sidebar/lightnode.svg'
-import ic_archivernode from '@/public/sidebar/archivenode.svg'
-import ic_subnet from '@/public/sidebar/subnet.svg'
-import ic_dashboard from '@/public/sidebar/dashboard.svg'
-import ic_billing from '@/public/sidebar/billing.svg'
-import ic_setting from '@/public/sidebar/settings.svg'
-import ic_tutorial from '@/public/sidebar/tutorials.svg'
-import ic_helpcenter from '@/public/sidebar/helpcenter.svg'
-import ic_staking from '@/public/sidebar/staking.svg'
-import ic_governance from '@/public/sidebar/governance.svg'
-import logo from '@/images/logo/logo.png'
+import logo from '@/images/logo/logo.png';
+import ic_archivernode from '@/public/sidebar/archivenode.svg';
+import ic_billing from '@/public/sidebar/billing.svg';
+import ic_dashboard from '@/public/sidebar/dashboard.svg';
+import ic_governance from '@/public/sidebar/governance.svg';
+import ic_helpcenter from '@/public/sidebar/helpcenter.svg';
+import ic_lightnode from '@/public/sidebar/lightnode.svg';
+import ic_miner from '@/public/sidebar/miner.svg';
+import ic_setting from '@/public/sidebar/settings.svg';
+import ic_staking from '@/public/sidebar/staking.svg';
+import ic_subnet from '@/public/sidebar/subnet.svg';
+import ic_tutorial from '@/public/sidebar/tutorials.svg';
+import ic_validator from '@/public/sidebar/validator.svg';
 import Image from "next/image";
+import { formatEther } from "viem";
+import { useAccount, useBalance, useDisconnect } from "wagmi";
+import { useWeb3Modal } from "@web3modal/wagmi/react";
 
 
 export const SidebarWrapper = () => {
+  const { address } = useAccount();
   const pathname = usePathname();
   const { collapsed, setCollapsed } = useSidebarContext();
   const { setTheme, resolvedTheme } = useNextTheme();
+  const { disconnect } = useDisconnect();
+  const { open } = useWeb3Modal();
 
+  const data = useBalance({
+    address: address,
+  });
+  const handleConnect = () => {
+    open();
+  };
+  const handleDisconected = () => {
+    disconnect();
+  };
   return (
     <aside className="h-screen z-[40] sticky top-0 sidebar">
       {collapsed ? (
         <div className={Sidebar.Overlay()} onClick={setCollapsed} />
       ) : null}
       <div
-        className={`w-[300px] bg-[#000110] ${Sidebar({
+        className={`w-full md:w-[400px] lg:w-[300px] bg-[#000110] ${Sidebar({
           collapsed: collapsed,
         })}`}
       >
         <div>
-          <Image alt="logo" src={logo} />
+          <Image alt="logo" src={logo} className="hidden lg:block" />
+          <div className="flex lg:hidden items-center justify-between space-x-4 text-[#fff] font-jetbrain">
+            <p className="flex items-center space-x-3 text-sm">
+              <span>Balance:</span>
+              <span className="text-sm foπnt-medium text-[#6C3BEF]">
+                $
+                {data?.data?.value
+                  ? Number(formatEther(data?.data?.value)).toFixed(5)
+                  : "0"}
+              </span>
+            </p>
+            {address ? (
+              <div
+                onClick={handleDisconected}
+                className="flex items-center text-[#fff] text-sm space-x-2 wallet cursor-pointer"
+              >
+                <Image
+                  className="w-6 h-6 min-w-6"
+                  src={icMetamask}
+                  alt="icon"
+                />
+                <span>{address.slice(0, 5) + "..." + address.slice(-5)}</span>
+              </div>
+            ) : (
+              <p
+                onClick={handleConnect}
+                className="flex items-center text-[#fff] text-sm space-x-2 wallet cursor-pointer"
+              >
+                Connect Wallet
+              </p>
+            )}
+          </div>
         </div>
         <div className="flex flex-col justify-between h-full">
           <div className={Sidebar.Body()}>

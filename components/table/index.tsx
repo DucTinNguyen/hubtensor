@@ -45,13 +45,13 @@ const TableComponent = <T,>({ columns, data, className }: PropsTable<T>) => {
     );
 
   return (
-    <div className={`${className} flex flex-col`}>
+    <div className={`${className} flex flex-col overflow-x-auto`}>
       <div
-        className={`h-[58px] border border-[#353539] flex items-center`}
+        className={`h-[58px] border overflow-x-auto border-[#353539] flex items-center`}
       >
         {headers}
       </div>
-      <div className="flex w-full overflow-x-auto flex-col">
+      <div className="flex overflow-x-auto flex-col">
         {rows}
       </div>
     </div>

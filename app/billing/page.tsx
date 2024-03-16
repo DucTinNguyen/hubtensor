@@ -65,7 +65,7 @@ const Billing = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className=" flex flex-col lg:gap-10">
+    <div className=" flex flex-col gap-10">
       <button
         onClick={() => {
           setOpen(true);
@@ -80,11 +80,14 @@ const Billing = () => {
           <Image src={ic_credit} alt="icon" className="w-8 h-8 min-w-8" />
           <span className="text-[24px] font-semibold text-[#FFFFFF]">Node</span>
         </div>
-        <TableComponent
-          className="w-[720px]"
-          columns={columnsCredit}
-          data={[]}
-        />
+        <div className="w-full overflow-x-auto">
+          <TableComponent
+            className="w-[720px]"
+            columns={columnsCredit}
+            data={[]}
+          />
+        </div>
+        
       </div>
       <div className="flex flex-col space-y-6">
         <div className="flex items-center space-x-4">
@@ -93,7 +96,9 @@ const Billing = () => {
             Subnet
           </span>
         </div>
-        <TableComponent className="w-[720px]" columns={columnsBill} data={[]} />
+        <div className="w-full overflow-x-auto">
+          <TableComponent className="w-[720px]" columns={columnsBill} data={[]} />
+        </div>
       </div>
       <ModalCredit
         isOpen={open}

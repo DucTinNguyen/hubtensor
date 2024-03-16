@@ -450,12 +450,14 @@ const columnsSubnet: Array<Columns<Subnet>> = [
 
 const Subnet = () => {
   return (
-    <div className='w-[980px] mx-auto'>
-      <p className='text-[#fff] font-bold'>
+    <div className=' mx-auto'>
+      <p className='text-[#fff] font-bold w-full lg:w-[980px] mx-auto'>
         There are no subnet slot available now. <br />
         You can explore subnet all current subnet information below
       </p>
-      <TableComponent className='mt-12' data={data} columns={columnsSubnet} />
+      <div className='w-full overflow-x-auto'>
+        <TableComponent className='mt-12 w-[980px] mx-auto overflow-auto' data={data} columns={columnsSubnet} />
+      </div>
     </div>
   )
 }
