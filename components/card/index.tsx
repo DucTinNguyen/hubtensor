@@ -69,7 +69,7 @@ const Card = ({ icon_type, price, cpu, gpu, memory, storage, os }: Props) => {
           }}
           className="btn w-full h-full flex items-center justify-center cursor-pointer z-10"
         >
-          <p className="bg-[#fdfeff] w-full h-full py-2 rounded-lg font-semibold text-base cursor-pointer">
+          <p className="bg-[#fdfeff] text-[#11181c] w-full h-full py-2 rounded-lg font-semibold text-base cursor-pointer">
             Buy
           </p>
         </button>
