@@ -7,7 +7,7 @@ const ArchiveNode = () => {
     <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       <Card
         icon_type={ic_type2}
-        price={0.39}
+        price={0.59}
         cpu={4}
         gpu="None"
         memory={16}
